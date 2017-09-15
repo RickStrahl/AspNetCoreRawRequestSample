@@ -24,7 +24,7 @@ namespace LocalizationSample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(o => o.InputFormatters.Insert(0, new RawRequestBodyFormatter()));
+            services.AddMvc(); //(o => o.InputFormatters.Insert(0, new RawRequestBodyFormatter()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

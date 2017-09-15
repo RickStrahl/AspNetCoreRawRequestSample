@@ -14,10 +14,15 @@ namespace LocalizationSample.Controllers
 
         [HttpGet]
         [Route("api/bodytypes")]
-        [Route("api/BodyTypes/HelloWorld")]
-        public string HelloWorld(string name)
-        {
-            return $"Hello World from Sample BodyTypes Controller, {name}.";
+        [Route("api/BodyTypes/HelloWorld/{name}")]
+        public object HelloWorld(string name = "So Mysteriously Anonymous")
+        {            
+
+            return new
+            {
+                Message = $"Hello cruel world, {{name}}",
+                Time = DateTime.Now
+            };
         }
 
         // GET api/values
@@ -88,6 +93,21 @@ namespace LocalizationSample.Controllers
         public byte[] RawBytesFormatter([FromBody] byte[] rawData)
         {
             return rawData;
-        }      
+        }
+
+
+
+        /// <summary>
+        /// THIS UNFORTUNATELY ALSO DOESN"T WORK
+        /// either with application/octet-stream or even with application/json        
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/BodyTypes/StreamParameterString")]
+        public async Task<string> StreamParameterString([FromBody] Stream data)
+        {
+            return await Request.GetRawBodyStringAsync(inputStream: data);
+        }
     }
 }

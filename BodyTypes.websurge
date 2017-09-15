@@ -51,6 +51,15 @@ Raw Wind and Water make the world go 'round.
 
 ------------------------------------------------------------------
 
+POST http://localhost:5000/api/BodyTypes/StreamParameterString HTTP/1.1
+Accept-Encoding: gzip,deflate
+Content-type: application/octet-stream
+Websurge-Request-Name: StreamParameterString (Failing)
+
+Windy Rivers with Waves are the best!
+
+------------------------------------------------------------------
+
 
 ----- Start WebSurge Options -----
 
